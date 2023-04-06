@@ -1,0 +1,53 @@
+<div class="container mt-3" >
+
+    <form class="content" [formGroup]="registerForm" (ngSubmit)="submitData()">
+        <h3>Register Form</h3>
+        <div class="row">
+            <div class="mt-2 mb-2 col-lg-6 col-6">
+                <input type="text" formControlName="fullName" class="form-control" placeholder="Full Name">
+               <!--error start-->
+                <div *ngIf="fullname.invalid && fullname.touched || fullname.dirty">
+                    <span class="error" *ngIf="fullname.errors?.required">*Full Name is Required</span>
+                    
+                </div>
+                <!--error end-->
+            </div>
+
+            
+
+            <div class="mt-2 mb-2 col-lg-12 col-12">
+                <input type="text" formControlName="emailId" class="form-control" placeholder="Email Id">
+                 <!--error start-->
+                 <div *ngIf="emailid.invalid && emailid.touched || emailid.dirty">
+                    <span class="error" *ngIf="emailid.errors?.required">*Email Id is Required</span>
+                    <span class="error" *ngIf="emailid.errors?.pattern">*Enter valid Email address</span>
+                </div>
+                <!--error end-->
+            </div>
+
+            <div class="mt-2 mb-2 col-lg-12 col-12">
+                <input type="text" formControlName="mobileNumber" class="form-control" placeholder="Mobile Number">
+                <!--error start-->
+                <div *ngIf="mobilenumber.invalid && mobilenumber.touched || mobilenumber.dirty">
+                    <span class="error" *ngIf="mobilenumber.errors?.required">*Mobile Number is Required</span>
+                    <span class="error" *ngIf="mobilenumber.errors?.pattern">*Enter valid mobile number</span>
+                </div>
+                <!--error end-->
+            </div>
+
+            <div class="mt-2 mb-2 col-lg-6 col-6">
+                <input type="text" formControlName="password" class="form-control" placeholder="password">
+                <!--error start-->
+                <div *ngIf="password.invalid && password.touched || password.dirty">
+                    <span class="error" *ngIf="password.errors?.required">*Password is Required</span>
+                    <span class="error" *ngIf="password.errors?.pattern">*Enter only characters</span>
+                </div>
+                <!--error end-->
+            </div>
+
+            <div class="col-lg-12 col-12">
+                <button class="btn btn-primary" [disabled]="registerForm.invalid">Submit</button>
+            </div>
+        </div>    
+    </form>
+</div>
